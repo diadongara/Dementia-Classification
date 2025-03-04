@@ -54,4 +54,26 @@ nwbv=st.slider("What is the value for Normalize Whole Brain Volume", 0.0, 1.0,0.
 #input for Atlas Scaling Factor
 asf=st.slider("What is the value for Atlas Scaling Factor", 0.0, 2.0,0.01)
 
+def predict(dictionary):
+  categorical_value = [list(dictionary.values())[0]]
+  numeric_values=list(dictionary.values())[1:]
+  numeric_values_scaled = scaler_model.transform(np.array([numeric_values]))
+  print(categorical_value)
+  print(numeric_values_scaled)
+  final_list = categorical_value + list(numeric_values_scaled[0])
+  print(final_list)
+  prediction=final_model.predict([final_list])
+  print(prediction)
+  if prediction==[0]:
+      return 'demented'
+    #print('demented')
+  else:
+      return 'non-demented'
+
+if st.button('Predict Dementia'):
+    input_data = {'M/F_M':g,'MR Delay':mr_delay,'Age':age,'EDUC':educ,'SES':ses,'MMSE':mmse,'CDR':cdr,'eTIV':etiv,'nWBV':nwbv,'ASF':asf}
+    predictions=predict(input_data)
+    st.spinner(text="In progress...")
+    st.subheader("User Condition: {}".format(predictions))
+
 
