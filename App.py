@@ -15,7 +15,7 @@ st.title("Dementia Prediction WebApp")
 
 IMAGE_ADDRESS = "https://media.npr.org/assets/img/2024/05/22/gettyimages-1805884626_custom-12456c773bb5d72837b1b3534ff4e90e4f68a983.jpg?s=1100&c=85&f=jpeg"
 # set the image
-st.image(IMAGE_ADDRESS
+st.image(IMAGE_ADDRESS)
 
 st.subheader("Please enter the details:")
 
