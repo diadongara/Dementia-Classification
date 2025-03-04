@@ -10,6 +10,14 @@ final_model = pickle.load(file_name)
 scaler_model_name = open(scaler_model_file,'rb')
 scaler_model = pickle.load(scaler_model_name)
 
+@st.cache_resource
+def load_sklearn_models(model_path):
+
+    with open(model_path, 'rb') as model_file:
+        final_model = pickle.load(model_file)
+
+    return final_model
+    
 #title of the web page
 st.title("Dementia Prediction WebApp")
 
